@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Pratham Kotkar, backend and AI systems engineer. Projects, experience and contact.">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}</style>
+<title>Pratham Kotkar Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: single long page in the manner of a studio portfolio. Sticky bracketed nav, one big thesis headline,
+   a numbers band, project cards, a "plumbing" diagram, then about / experience / contact. */
+:root {
+  --bg: #f5f1e8;
+  --card: #fbf9f3;
+  --fg: #15171c;
+  --muted: #5b5e66;
+  --line: #d8d1bf;
+  --accent: #2b3fd6;
+  --accent-soft: #e4e7fb;
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101216; --card: #171a20; --fg: #eceae3; --muted: #9a9ca4;
+    --line: #2a2d36; --accent: #93a2ff; --accent-soft: #1d2236; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101216; --card: #171a20; --fg: #eceae3; --muted: #9a9ca4;
+  --line: #2a2d36; --accent: #93a2ff; --accent-soft: #1d2236; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-inline: 20px; -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: 1120px; margin-inline: auto; }
+.mono { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; }
+.muted { color: var(--muted); }
+section { scroll-margin-top: 72px; }
+
+/* header */
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  margin-inline: -20px; padding-inline: 20px;
+}
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; flex-wrap: wrap; padding-block: 8px; }
+.logo { font-family: var(--font-mono); font-weight: 500; text-decoration: none; letter-spacing: .08em; }
+nav { display: flex; gap: 22px; flex-wrap: wrap; }
+nav a { text-decoration: none; font-size: 15px; color: var(--muted); }
+nav a:hover { color: var(--fg); }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer;
+  font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase;
+  border: 1px solid var(--fg); padding: 10px 16px; background: transparent; color: var(--fg);
+  transition: background .15s, color .15s;
+}
+.btn:hover { background: var(--fg); color: var(--bg); }
+.btn.solid { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn.solid:hover { background: var(--fg); border-color: var(--fg); }
+
+/* hero */
+.hero { padding-block: 72px 56px; }
+.hero .eyebrow { margin-bottom: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+.hero .eyebrow b { font-weight: 500; color: var(--accent); }
+h1 {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(2.3rem, 6.4vw, 5rem);
+  line-height: 1.03; letter-spacing: -.025em; margin: 0 0 44px; max-width: 18ch; text-wrap: balance;
+}
+h1 em { font-style: normal; color: var(--accent); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; border-top: 1px solid var(--line); padding-top: 24px; }
+.facts .label { margin-bottom: 6px; color: var(--muted); }
+.facts p { margin: 0; font-size: 18px; line-height: 1.45; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px; }
+.tag { border: 1px solid var(--line); padding: 4px 12px; border-radius: 999px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+/* numbers */
+.numbers { border-block: 1px solid var(--line); padding-block: 44px; }
+.numbers .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 32px; }
+.num { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 5vw, 3.6rem); letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.num small { font-size: .5em; letter-spacing: 0; margin-left: 2px; color: var(--accent); }
+.numbers p { margin: 10px 0 0; color: var(--muted); font-size: 15px; line-height: 1.45; max-width: 26ch; }
+
+/* section heads */
+.block { padding-block: 88px 0; }
+.sh { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 36px; }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.9rem); line-height: 1.08; letter-spacing: -.02em; margin: 0; max-width: 20ch; text-wrap: balance; }
+
+/* work cards */
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px; }
+.card { background: var(--card); border: 1px solid var(--line); padding: 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; transition: border-color .15s, transform .15s; }
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card .head { display: flex; align-items: center; gap: 14px; }
+.mark { width: 44px; height: 44px; flex: none; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-family: var(--font-mono); font-weight: 500; font-size: 14px; }
+.card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; line-height: 1.15; letter-spacing: -.01em; margin: 0; }
+.card .kind { color: var(--muted); }
+.card p { margin: 0; }
+.card ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--muted); font-size: 15.5px; }
+.metrics { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+.metric { font-family: var(--font-mono); font-size: 12px; padding: 5px 10px; background: var(--accent-soft); color: var(--accent); }
+.stack { color: var(--muted); font-family: var(--font-mono); font-size: 12px; }
+
+/* plumbing */
+.plumb { display: grid; grid-template-columns: 1fr; gap: 32px; }
+.plumb-copy p { font-size: 19px; max-width: 58ch; margin: 0 0 14px; }
+.flow { display: grid; grid-template-columns: minmax(110px, 1fr) minmax(0, 2.6fr) minmax(110px, 1fr); gap: 14px; align-items: stretch; }
+.end { border: 1px solid var(--fg); padding: 16px; display: flex; flex-direction: column; justify-content: center; gap: 4px; text-align: center; }
+.end span { color: var(--muted); font-size: 14px; line-height: 1.35; }
+.mid { border: 1px dashed var(--accent); padding: 18px; display: grid; gap: 10px; background: var(--card); position: relative; }
+.mid > .mono { color: var(--accent); }
+.parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.part { border: 1px solid var(--line); padding: 10px 12px; font-size: 14.5px; line-height: 1.35; background: var(--bg); }
+.part b { display: block; font-weight: 600; }
+.part span { color: var(--muted); font-size: 13.5px; }
+@media (max-width: 720px) { .flow { grid-template-columns: 1fr; } }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 48px; align-items: start; }
+.about img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; border: 1px solid var(--line); }
+.about p { margin: 0 0 16px; font-size: 19px; max-width: 56ch; }
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; gap: 28px; } .about img { max-width: 320px; } }
+
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 48px 40px; margin-top: 72px; }
+.col h3 { margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-weight: 500; color: var(--muted); }
+.row { display: grid; grid-template-columns: 1fr; gap: 2px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row b { font-weight: 600; }
+.row .when { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.row p { margin: 6px 0 0; font-size: 15.5px; color: var(--muted); line-height: 1.5; }
+dl.skills { margin: 0; display: grid; gap: 18px; }
+dl.skills dt { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+dl.skills dd { margin: 0; font-size: 16px; line-height: 1.55; }
+
+/* contact */
+.contact { margin-top: 96px; border-top: 1px solid var(--fg); padding-block: 72px 80px; }
+.contact h2 { max-width: 14ch; font-size: clamp(2.3rem, 6vw, 4.4rem); margin-bottom: 32px; }
+.email-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 28px; }
+.email { font-family: var(--font-mono); font-size: clamp(1rem, 2.6vw, 1.35rem); user-select: all; overflow-wrap: anywhere; }
+.links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card, .btn { transition: none; } .card:hover { transform: none; } }
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#home">[ PK ]</a>
+    <nav aria-label="Sections">
+      <a href="#home">Home</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#contact">Connect with me &rarr;</a>
+  </div>
+</header>
+
+<main class="wrap" id="home">
+  <section class="hero">
+    <div class="eyebrow mono"><b>[ Pratham Kotkar ]</b><span class="muted">-&gt; backend &amp; ai systems engineer</span></div>
+    <h1>I build the backend behind AI products, and make it <em>hold under load.</em></h1>
+    <div class="facts">
+      <div><div class="label mono">Shipped at</div><p>Ardent Privacy, enterprise data discovery</p></div>
+      <div><div class="label mono">Built</div><p>An LLM gateway in Go that holds 5,000 req/s</p></div>
+      <div><div class="label mono">Now</div><p>M.S. Computer Science, UC Santa Cruz</p></div>
+    </div>
+    <div class="tags" aria-label="Core stack">
+      <span class="tag">Go</span><span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">Rust</span>
+      <span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">LangGraph</span>
+    </div>
+  </section>
+</main>
+
+<div class="numbers">
+  <div class="wrap">
+    <div><div class="num">30<small>%</small></div><p>faster API responses on the Data Discovery backend, from query tuning and Redis caching</p></div>
+    <div><div class="num">2&ndash;10<small>ms</small></div><p>p95 overhead added by my LLM gateway at 5,000 requests a second</p></div>
+    <div><div class="num">64<small>&rarr;83%</small></div><p>recall@5 on a RAG service over 7,600 documents, versus vector-only search</p></div>
+    <div><div class="num">&lt;140<small>ms</small></div><p>to fail over to another model provider during simulated outages</p></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="block" id="work">
+    <div class="sh">
+      <h2>What I&rsquo;ve built, and what it holds up under</h2>
+      <span class="mono muted">Selected work, 2024&ndash;2026</span>
+    </div>
+    <div class="grid2">
+      <article class="card">
+        <div class="head"><div class="mark">AP</div><div><h3>Ardent Privacy</h3><div class="kind mono">Data Discovery &middot; software engineer</div></div></div>
+        <p>Backend for the flagship product that lets enterprises scan, classify and manage sensitive data, with compliance logic and the APIs the frontend runs on.</p>
+        <ul>
+          <li>Modular REST APIs in Node.js and Express, backed by CockroachDB.</li>
+          <li>Query optimization and Redis caching, scaled to millions of records.</li>
+          <li>CI/CD pipelines, Docker containers and release deployments.</li>
+        </ul>
+        <div class="metrics"><span class="metric">30% faster responses</span><span class="metric">Millions of records</span></div>
+        <div class="stack">Mar 2024 &ndash; Mar 2026</div>
+      </article>
+
+      <article class="card">
+        <div class="head"><div class="mark">GW</div><div><h3>LLM Gateway</h3><div class="kind mono">Multi-provider routing &middot; personal project</div></div></div>
+        <p>Apps that call model APIs directly inherit provider outages, runaway costs and leaked sensitive data. This gateway sits between services and providers and absorbs all three.</p>
+        <ul>
+          <li>Provider routing with automatic failover and SSE streaming passthrough.</li>
+          <li>Redis token-bucket rate limiting and semantic response caching.</li>
+          <li>PII redaction middleware and Prometheus metrics for cost and latency.</li>
+        </ul>
+        <div class="metrics"><span class="metric">+2&ndash;10 ms p95 at 5,000 req/s</span><span class="metric">&minus;32% repeat-query spend</span><span class="metric">&lt;140 ms failover</span></div>
+        <div class="stack">Go &middot; Redis &middot; Prometheus &middot; Docker &middot; Sep 2025 &ndash; Jan 2026</div>
+      </article>
+
+      <article class="card">
+        <div class="head"><div class="mark">RAG</div><div><h3>Production RAG Service</h3><div class="kind mono">Retrieval with an evaluation harness</div></div></div>
+        <p>Keyword search misses context and LLM answers go unverified. This API answers over 7,600 documents and scores its own quality.</p>
+        <ul>
+          <li>Async ingestion workers and hybrid vector plus full-text retrieval with reranking.</li>
+          <li>Redis response caching behind FastAPI.</li>
+          <li>Eval harness measuring recall@k and answer faithfulness on a labeled question set.</li>
+        </ul>
+        <div class="metrics"><span class="metric">recall@5 64% &rarr; 83%</span><span class="metric">167 ms p95</span><span class="metric">59% cache hits</span></div>
+        <div class="stack">FastAPI &middot; PostgreSQL/pgvector &middot; Redis &middot; Docker &middot; Oct 2025 &ndash; Feb 2026</div>
+      </article>
+
+      <article class="card">
+        <div class="head"><div class="mark">IR</div><div><h3>AI Incident Response Platform</h3><div class="kind mono">Multi-agent workflow</div></div></div>
+        <p>A distributed incident response platform that orchestrates several AI agents through a checkpointed workflow that can resume where it stopped.</p>
+        <ul>
+          <li>Asynchronous coordination services in FastAPI.</li>
+          <li>Approval workflows with safety guardrails before agents act.</li>
+          <li>LangSmith observability, and LLM reasoning checked by heuristic validation.</li>
+        </ul>
+        <div class="metrics"><span class="metric">Checkpointed agents</span><span class="metric">Human approval gates</span></div>
+        <div class="stack">FastAPI &middot; LangGraph &middot; LangSmith &middot; Mar &ndash; Apr 2026</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="approach">
+    <div class="sh"><h2>Most LLM systems don&rsquo;t fail at the model. They fail at the plumbing.</h2><span class="mono muted">Approach</span></div>
+    <div class="plumb">
+      <div class="plumb-copy">
+        <p>Routing, rate limits, caching, redaction, failover. These are the parts nobody demos, and the parts that decide whether a product stays up. My gateway handles them in one place so each service does not have to.</p>
+      </div>
+      <div class="flow" role="img" aria-label="Diagram: your services send requests through the gateway, which handles rate limiting, semantic caching, PII redaction, provider failover and metrics, before reaching model providers.">
+        <div class="end"><b>Your services</b><span>Call one endpoint</span></div>
+        <div class="mid">
+          <div class="mono">LLM gateway &middot; Go</div>
+          <div class="parts">
+            <div class="part"><b>Rate limiting</b><span>Redis token bucket</span></div>
+            <div class="part"><b>Semantic cache</b><span>&minus;32% repeat spend</span></div>
+            <div class="part"><b>PII redaction</b><span>Middleware on requests</span></div>
+            <div class="part"><b>Failover</b><span>&lt;140 ms to switch provider</span></div>
+            <div class="part"><b>Streaming</b><span>SSE passthrough</span></div>
+            <div class="part"><b>Metrics</b><span>Prometheus cost and latency</span></div>
+          </div>
+        </div>
+        <div class="end"><b>Model providers</b><span>Any can go down</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="sh"><h2>Backend engineer, moving deeper into AI infrastructure</h2><span class="mono muted">About</span></div>
+    <div class="about">
+      <img src="photo.jpg" alt="Portrait of Pratham Kotkar" width="640" height="640">
+      <div>
+        <p>I spent two years at Ardent Privacy building the backend for a data discovery product, where sensitive data, compliance rules and large record counts leave little room for slow or fragile services.</p>
+        <p>Outside that job I build the infrastructure around language models: a gateway that survives provider outages, a retrieval service that measures its own answer quality, and an agent workflow with approval gates.</p>
+        <p>I&rsquo;m now studying for an M.S. in Computer Science at UC Santa Cruz, after a B.E. in Computer Science from Savitribai Phule Pune University (3.81/4.00).</p>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div class="col">
+        <h3 class="mono">Experience</h3>
+        <div class="row"><b>Software Engineer, Ardent Privacy</b><span class="when">MAR 2024 &ndash; MAR 2026</span><p>Backend and APIs for the Data Discovery product, plus CI/CD and deployments.</p></div>
+        <div class="row"><b>Software Development Intern, MandrakeTech</b><span class="when">AUG &ndash; NOV 2023, PUNE</span><p>Built a mock Gmail API in Rust with the Gmail API and OAuth, and learned Docker deployment.</p></div>
+        <div class="row"><b>Software Development Intern, BlueBinaries</b><span class="when">FEB &ndash; MAY 2023, PUNE</span><p>Flutter and Firebase app that explains dashboard warning lights. Cut issue identification from 55 to 25 seconds.</p></div>
+      </div>
+
+      <div class="col">
+        <h3 class="mono">Education</h3>
+        <div class="row"><b>M.S. Computer Science, UC Santa Cruz</b><span class="when">SEP 2026 &ndash; PRESENT</span></div>
+        <div class="row"><b>B.E. Computer Science, Savitribai Phule Pune University</b><span class="when">AUG 2020 &ndash; MAY 2024 &middot; 3.81/4.00</span><p>Algorithms, advanced data structures, network security, machine learning, NLP, data visualization.</p></div>
+        <h3 class="mono" style="margin-top:36px">Research &amp; recognition</h3>
+        <div class="row"><b>Smart Workout Companion</b><span class="when">PAPER &middot; MAY 2024</span><p>Deep learning for posture monitoring and yoga pose refinement. Presented as &ldquo;PoseCraft Fitness Navigator&rdquo; at ICRTACT-2024, an international conference.</p></div>
+        <div class="row"><b>OOP Hackathon runner-up</b><span class="when">MMCOE &middot; DEC 2021</span></div>
+      </div>
+
+      <div class="col">
+        <h3 class="mono">Skills</h3>
+        <dl class="skills">
+          <div><dt>Languages</dt><dd>Go, Python, Rust, JavaScript, C, C++</dd></div>
+          <div><dt>Backend &amp; data</dt><dd>Node.js, Express.js, Flask, CockroachDB, PostgreSQL, MySQL, MongoDB, Redis</dd></div>
+          <div><dt>Cloud &amp; DevOps</dt><dd>AWS, Azure, GCP, Docker, Jenkins, Linux, Git, CI/CD</dd></div>
+          <div><dt>Vision</dt><dd>OpenCV, MediaPipe</dd></div>
+        </dl>
+        <h3 class="mono" style="margin-top:36px">Certifications &amp; leadership</h3>
+        <div class="row"><b>AWS Academy Cloud Foundations</b><span class="when">AMAZON WEB SERVICES</span></div>
+        <div class="row"><b>IBM Cybersecurity Fundamentals</b><span class="when">IBM SKILLSBUILD</span></div>
+        <div class="row"><b>Core committee, Google Developer Student Club</b><span class="when">SOFTWARE DEVELOPMENT, MMCOE</span></div>
+        <div class="row"><b>Software team member, TEAM CODE</b><span class="when">MMCOE</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="mono muted" style="margin-bottom:20px">Contact</div>
+    <h2>Tell me what you&rsquo;re building.</h2>
+    <div class="email-row">
+      <span class="email" id="email">prathampkotkar@gmail.com</span>
+      <button class="btn" type="button" id="copy">Copy email</button>
+    </div>
+    <div class="email-row">
+      <span class="email" id="phone">+1 831-400-9796</span>
+      <button class="btn" type="button" id="copyPhone">Copy number</button>
+    </div>
+    <div class="links" id="links"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap mono">
+    <span>&copy; 2026 Pratham Kotkar</span>
+    <span>The layer between app and model</span>
+  </div>
+</footer>
+
+<script>
+  // Fill these in to show profile buttons in the contact section. Empty entries are not shown.
+  var LINKS = { LinkedIn: "https://www.linkedin.com/in/pratham-kotkar/", GitHub: "https://github.com/PrathamKotkar" };
+
+  var box = document.getElementById("links");
+  Object.keys(LINKS).forEach(function (name) {
+    if (!LINKS[name]) return;
+    var a = document.createElement("a");
+    a.className = "btn"; a.href = LINKS[name]; a.target = "_blank"; a.rel = "noopener";
+    a.textContent = name + " →";
+    box.appendChild(a);
+  });
+
+  function wireCopy(btnId, textId, label) {
+    var btn = document.getElementById(btnId);
+    btn.addEventListener("click", function () {
+      var el = document.getElementById(textId);
+      function select() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      }
+      function done() { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = label; }, 1800); }
+      try {
+        navigator.clipboard.writeText(el.textContent).then(done, select);
+      } catch (e) { select(); }
+    });
+  }
+  wireCopy("copy", "email", "Copy email");
+  wireCopy("copyPhone", "phone", "Copy number");
+</script>
+
+</body>
+</html>
